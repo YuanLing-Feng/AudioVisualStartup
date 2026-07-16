@@ -13,7 +13,7 @@ export interface Shape {
 export interface Group {
   id: string; name: string; memberIds: string[]; composition: Composition; count: number; spacing: number;
   radius: number; columns: number; offset: number; reverse: boolean; perspective: boolean; perspectiveStrength: number;
-  seed: number; path?: PathDef;
+  seed: number; path?: PathDef; hidden?: boolean;
 }
 export interface PathDef {
   kind: PathKind; x: number; y: number; length: number; radius: number; offset: number; orientation: boolean;
@@ -21,7 +21,7 @@ export interface PathDef {
 }
 export interface Field {
   id: string; name: string; kind: FieldKind; x: number; y: number; radius: number; strength: number; direction: number;
-  falloff: 'uniform' | 'radial';
+  falloff: 'uniform' | 'radial'; ownerId?: string; ownerKind?: 'shape' | 'group';
 }
 export type SourceId = 'pitch' | 'velocity' | 'duration' | 'pan' | 'event' | 'spectrum';
 export interface Mapping {

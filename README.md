@@ -31,7 +31,7 @@ npm run build
 - 透视、组内实例和稳定成员顺序
 - 标量与频谱序列映射卡
 - 移动影响层与路径辅助信息
-- Strudel 风格代码区、声音监控和 Web Audio 实时驱动
+- 官方 Strudel REPL、源码播放位置反馈、声音监控和实时驱动
 - 纯净视图
 
-当前声音执行层为 Web Audio 驱动的交互原型，后续可接入正式 Strudel runtime。
+声音执行层使用官方 `@strudel/repl` 1.3.0：修改代码后可通过 `Ctrl/Alt + Enter` 重新求值并播放，通过 `Ctrl/Alt + .` 停止。
