@@ -23,10 +23,10 @@ export interface Field {
   id: string; name: string; kind: FieldKind; x: number; y: number; radius: number; strength: number; direction: number;
   falloff: 'uniform' | 'radial'; ownerId?: string; ownerKind?: 'shape' | 'group';
 }
-export type SourceId = 'pitch' | 'velocity' | 'duration' | 'pan' | 'event' | 'spectrum';
+export type SourceId = 'pitch' | 'velocity' | 'duration' | 'pan' | 'event' | 'spectrum' | 'volume' | 'volumeSequence' | 'low' | 'mid' | 'high' | 'envelope';
 export interface Mapping {
   id: string; source: SourceId; targetKind: 'shape' | 'group' | 'path' | 'field' | 'members'; targetId: string;
-  property: string; base: number; min: number; max: number; enabled: boolean; reverse: boolean;
-  sampling: 'average' | 'peak' | 'linear'; colorA?: string; colorB?: string;
+  property: string; min: number; max: number; enabled: boolean; reverse: boolean; smooth: boolean;
+  sampling: 'average' | 'peak' | 'linear'; colorA?: string; colorB?: string; sourceTrack?: string;
 }
 export interface AppState { shapes: Shape[]; groups: Group[]; fields: Field[]; mappings: Mapping[]; }
