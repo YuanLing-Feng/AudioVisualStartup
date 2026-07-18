@@ -47,3 +47,93 @@ body .app{grid-template-columns:220px minmax(0,1fr) 292px!important}body .app .l
 .draft-property-picker button>i{width:4px;height:24px;border-radius:3px;flex:none}
 .draft-property-picker button>svg{position:absolute;right:11px;color:#697581;transition:transform .12s,color .12s}
 .draft-property-picker button:hover>svg,.draft-property-picker button:focus-visible>svg{color:#cbd4dc;transform:translateX(2px)}
+
+/* Mapping history rail: attached to the properties panel and expanded to the left. */
+.property-mapping-rail{position:fixed;z-index:46;top:68px;right:292px;bottom:226px;width:72px;display:flex;flex-direction:column;align-items:flex-end;gap:4px;padding-top:2px;pointer-events:none}
+.property-mapping-item{position:relative;width:72px;height:20px;display:flex;justify-content:flex-end;align-items:center;pointer-events:auto}
+.property-mapping-trigger{width:16px;height:20px;padding:0;border:0;background:transparent;display:flex;align-items:center;justify-content:flex-end;cursor:pointer;transition:width .18s ease}
+.property-mapping-trigger>i{display:block;width:9px;height:3px;border-radius:3px 0 0 3px;box-shadow:0 1px 4px #0007;opacity:.82;transition:width .18s ease,filter .18s ease,opacity .18s ease}
+.property-mapping-item:hover .property-mapping-trigger,.property-mapping-item.active .property-mapping-trigger,.property-mapping-item:focus-within .property-mapping-trigger{width:58px}
+.property-mapping-item:hover .property-mapping-trigger>i,.property-mapping-item.active .property-mapping-trigger>i,.property-mapping-item:focus-within .property-mapping-trigger>i{width:52px;filter:brightness(1.12);opacity:1}
+.property-mapping-item.disabled .property-mapping-trigger>i{opacity:.34}
+.property-mapping-card{position:fixed!important;z-index:47!important;left:auto!important;right:350px!important;top:64px!important;width:min(430px,calc(100vw - 390px))!important;max-height:calc(100vh - 290px)!important;transform-origin:right top;animation:propertyMappingReveal .18s ease-out;box-shadow:0 22px 58px #000a!important}
+@keyframes propertyMappingReveal{from{opacity:0;transform:translateX(12px) scale(.985)}to{opacity:1;transform:translateX(0) scale(1)}}
+.mapping-draft-card.mapping-v2{left:auto!important;right:304px!important;top:12px!important}
+@media(max-width:900px){.property-mapping-card{width:min(430px,calc(100vw - 370px))!important}.mapping-draft-card.mapping-v2{right:12px!important}}
+
+/* Compact mapping editor; typography remains unchanged. */
+.floating-mapping-card,.mapping-draft-card.mapping-v2{width:360px}
+.mapping-draft-card.mapping-v2:has(.draft-property-picker){width:480px}
+.property-mapping-card{width:min(360px,calc(100vw - 390px))!important}
+.mapping-v2-head{min-height:58px;padding:10px 12px;gap:8px}
+.mapping-source-live{min-width:0;gap:7px;flex:0 1 auto}
+.mapping-source-live>div{min-width:0;display:flex;align-items:baseline;gap:7px}
+.mapping-source-live>div b,.mapping-source-live>div strong{white-space:nowrap}
+.mapping-source-live strong{margin-top:0}
+.mapping-arrow{margin:0 2px}
+.mapping-target-title{gap:7px}
+.mapping-v2-body{padding:12px 14px 11px}
+.mapping-preview-track{margin:30px 5px 34px}
+.absolute-range-inputs{gap:14px}
+.absolute-range-inputs label{width:auto;min-width:0;flex:1}
+.absolute-range-inputs input[type=number]{width:100%;height:38px;padding:0 10px}
+.absolute-range-inputs label>span{margin-top:5px}
+.absolute-range-inputs.color-range input[type=color]{height:38px}
+.mapping-v2-actions{min-height:48px;padding:7px 12px;gap:8px}
+.mapping-v2-actions button{height:32px;padding:0 12px}
+.event-beta-note{margin:-3px 14px 10px;padding:7px 9px}
+.sequence-editor-v2{gap:10px}
+.sequence-flow{grid-template-columns:1fr 14px 1fr;gap:5px}
+.sequence-flow section{padding:8px}
+.mini-spectrum{height:40px;margin-top:6px}
+.sequence-settings{gap:7px}
+.sequence-settings>label,.sequence-settings>div{min-height:48px;padding:7px 8px}
+@media(max-width:900px){.property-mapping-card{width:min(360px,calc(100vw - 370px))!important}}
+
+/* Compact visual-property draft picker. */
+.draft-head{min-height:50px;padding:7px 12px;gap:8px}
+.draft-head>i{height:30px}
+.draft-head-title{min-width:0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.draft-head-title>b{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.draft-head-title>span{margin-left:auto;color:#77838f;font:500 10px/1.4 DM Mono;letter-spacing:.35px;white-space:nowrap}
+.draft-head small{margin-top:3px}
+.draft-property-picker{padding:0 20px 12px}
+.draft-property-picker section>label{padding-top:13px}
+.draft-property-picker button{min-height:42px}
+.draft-property-picker button>i{height:22px}
+
+.comp-grid{grid-template-columns:repeat(5,1fr)}
+
+/* Keep drag selection legible on both the light canvas and dark surroundings. */
+.marquee{
+  fill:none;
+  stroke:#087cff;
+  stroke-width:2.5;
+  stroke-dasharray:10 6;
+  vector-effect:non-scaling-stroke;
+  filter:drop-shadow(0 0 2px #ffffff) drop-shadow(0 0 4px #087cff66);
+}
+
+/* Mapping conflicts are decisions, so their text must remain readable at a glance. */
+.mapping-conflict{padding:30px 22px}
+.mapping-conflict>svg{width:28px;height:28px}
+.mapping-conflict b{margin:12px 0 7px;font-size:15px;line-height:1.4}
+.mapping-conflict span{font-size:11px;line-height:1.6}
+.mapping-conflict>div{margin-top:22px;gap:9px}
+.mapping-conflict button{min-height:38px;padding:0 14px;font-size:10px}
+
+.mapping-index-row>button+button{margin-left:-5px}
+.mapping-index-row>button:hover{border-radius:4px;background:#252d35;color:#c5d0da}
+.mapping-index-row>button.mapping-index-delete:hover{background:#342126;color:#dd8f99}
+
+/* Clean view must override the editor's !important three-column grid. */
+body .app.clean{
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:minmax(0,1fr)!important;
+}
+body .app.clean .stage-wrap{
+  grid-column:1/-1!important;
+  grid-row:1/-1!important;
+  width:100vw;
+  height:100vh;
+}
