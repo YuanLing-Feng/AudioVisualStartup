@@ -137,3 +137,9 @@ body .app.clean .stage-wrap{
   width:100vw;
   height:100vh;
 }
+
+.group-selection-surface{cursor:move}
+.group-hit-area{fill:transparent;stroke:none;pointer-events:all}
+.group-selection-surface .group-bounds,
+.group-selection-surface .group-label-bg,
+.group-selection-surface .group-label{pointer-events:none}
