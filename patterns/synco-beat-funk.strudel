@@ -1,0 +1,78 @@
+// Synco Beat Funk — approximate transcription
+// 140 BPM, 4 groove bars + a final D9 hit and reverb tail.
+
+setcpm(140 / 4)
+
+const bass = cat(
+  note("d2 d2 ~ a1 ~ ~ b1 d2"),
+  note("d2 e2 e2 g1 g1 ab1 a1 c2"),
+  note("d2 d2 ~ a1 ~ ~ b1 d2"),
+  note("d2 e2 e2 g1 g1 ab1 a1 c2"),
+  silence,
+  silence,
+)
+  .s("gm_slap_bass_1")
+  .clip(.48)
+  .lpf(1800)
+  .gain(.72)
+
+const guitar = cat(
+  note("[d4,f#4,c5,e5]*8"),
+  note("[d4,f#4,c5,e5]*8"),
+  note("[d4,f#4,c5,e5]*8"),
+  note("[d4,f#4,c5,e5]*8"),
+  silence,
+  silence,
+)
+  .s("gm_electric_guitar_muted")
+  .clip(.13)
+  .hpf(420)
+  .gain(".16 .28 .14 .3 .17 .25 .14 .32")
+  .pan(".38 .62")
+
+const kick = cat(
+  s("bd ~ ~ ~ ~ ~ ~ ~ bd ~ ~ ~ ~ ~ bd ~"),
+  s("bd ~ ~ ~ ~ ~ bd ~ ~ ~ bd ~ bd ~ bd ~"),
+  s("bd ~ ~ ~ ~ ~ ~ ~ bd ~ ~ ~ ~ ~ bd ~"),
+  s("bd ~ bd ~ ~ ~ bd ~ ~ ~ bd ~ ~ ~ bd ~"),
+  s("bd"),
+  silence,
+).bank("RolandTR909").gain(.9)
+
+const snare = cat(
+  s("~ ~ ~ ~ sd ~ ~ ~ ~ ~ ~ ~ sd ~ ~ ~"),
+  s("~ ~ ~ ~ sd ~ ~ ~ ~ ~ sd ~ sd ~ ~ ~"),
+  s("~ ~ ~ ~ sd ~ ~ ~ ~ ~ ~ ~ sd ~ ~ ~"),
+  s("~ ~ ~ ~ sd ~ sd ~ ~ ~ sd ~ sd ~ ~ ~"),
+  s("sd"),
+  silence,
+).bank("RolandTR909").gain(.62).room(.16)
+
+const hats = cat(
+  s("hh*8"),
+  s("hh*8"),
+  s("hh*8"),
+  s("hh*8").fast(1),
+  s("oh"),
+  silence,
+)
+  .bank("RolandTR909")
+  .gain(".34 .2 .31 .19 .36 .2 .31 .22")
+  .pan(".46 .54")
+
+const finalHit = cat(
+  silence,
+  silence,
+  silence,
+  silence,
+  note("[d2,a2,c3,e3,f#3,a3]")
+    .s("gm_clavinet")
+    .clip(3.2)
+    .lpf(4200)
+    .room(.72)
+    .roomsize(.9)
+    .gain(.62),
+  silence,
+)
+
+stack(bass, guitar, kick, snare, hats, finalHit)

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Sonic Canvas</title>
+  <desc id="desc">荧光绿色圆角方形中的深色声音波形</desc>
+  <rect x="64" y="64" width="896" height="896" rx="224" fill="#B8FF46"/>
+  <g
+    fill="none"
+    stroke="#111820"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    transform="translate(176 176) scale(28)"
+  >
+    <path d="M2 10v3"/>
+    <path d="M6 6v11"/>
+    <path d="M10 3v18"/>
+    <path d="M14 8v7"/>
+    <path d="M18 5v13"/>
+    <path d="M22 10v3"/>
+  </g>
+</svg>
